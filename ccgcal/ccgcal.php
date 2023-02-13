@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>強哥參數計算機</title>
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        td {
+            text-align: center;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Lato:400,500,600,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+
+        html,
+        body {
+            display: contents;
+            height: 100%;
+            place-items: center;
+            background: #454d55;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .wrapper {
+            display: inline-flex;
+            background: #454d55;
+            height: 100px;
+            width: 400px;
+            align-items: center;
+            justify-content: space-evenly;
+            border-radius: 5px;
+            padding: 20px 15px;
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .wrapper .option {
+            background: #fff;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 0 10px;
+            border: 2px solid lightgrey;
+            transition: all 0.3s ease;
+        }
+
+        .wrapper .option .dot {
+            height: 20px;
+            width: 20px;
+            background: #d9d9d9;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .wrapper .option .dot::before {
+            position: absolute;
+            content: "";
+            top: 4px;
+            left: 4px;
+            width: 12px;
+            height: 12px;
+            background: #0069d9;
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(1.5);
+            transition: all 0.3s ease;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        #option-1:checked:checked~.option-1,
+        #option-2:checked:checked~.option-2 {
+            border-color: #0069d9;
+            background: #0069d9;
+        }
+
+        #option-1:checked:checked~.option-1 .dot,
+        #option-2:checked:checked~.option-2 .dot {
+            background: #fff;
+        }
+
+        #option-1:checked:checked~.option-1 .dot::before,
+        #option-2:checked:checked~.option-2 .dot::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .wrapper .option span {
+            font-size: 20px;
+            color: #808080;
+        }
+
+        #option-1:checked:checked~.option-1 span,
+        #option-2:checked:checked~.option-2 span {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body style="background-color:black;">
+    <h2 style="color:white;text-align:center;">強哥參數計算機</h2>
+    <table class="table table-striped table-dark">
+        <div style="" class="wrapper">
+            <input type="radio" name="select" id="option-1">
+            <input type="radio" name="select" id="option-2">
+
+            <label for="option-1" class="option option-1">
+                <div class="dot"></div>
+                <span>做多</span>
+            </label>
+            <label for="option-2" class="option option-2">
+                <div class="dot"></div>
+                <span>做空</span>
+            </label>
+        </div>
+        <h2 style="color:white;text-align:center;">請在此填入首單數量<input type="text" id="input"><button type="button" id="cal" class="btn btn-primary" style="border-color:#4FC3A1; background-color:#4FC3A1">點我計算</button></h2>
+        <thead>
+            <tr>
+                <th id="longorshort1" scope="col" style="text-align:center" colspan="2"><span id="longorshortspan1"></span>參數設置</th>
+                <th id="longorshort2" scope="col" style="text-align:center" colspan="2"><span id="longorshortspan2"></span>參數設置</th>
+            </tr>
+        </thead>
+        <tbody id="tbody" style="display:none;">
+            <tr>
+                <td colspan="2" id='ll1'></td>
+                <td colspan="2" id='ls1'></td>
+                <td colspan="2" id='sl1'></td>
+                <td colspan="2" id='ss1'></td>
+            </tr>
+            <tr>
+                <td colspan="2" id='ll2'></td>
+                <td colspan="2" id='ls2'></td>
+                <td colspan="2" id='sl2'></td>
+                <td colspan="2" id='ss2'></td>
+            </tr>
+            <tr>
+                <td colspan="2" id='ll3'></td>
+                <td colspan="2" id='ls3'></td>
+                <td colspan="2" id='sl3'></td>
+                <td colspan="2" id='ss3'></td>
+            </tr>
+            <tr>
+                <td colspan="2" id='ll4'></td>
+                <td colspan="2" id='ls4'></td>
+                <td colspan="2" id='sl4'></td>
+                <td colspan="2" id='ss4'></td>
+            </tr>
+            <tr>
+                <td colspan="2" id='ll5'></td>
+                <td colspan="2" id='ls5'></td>
+                <td colspan="2" id='sl5'></td>
+                <td colspan="2" id='ss5'></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="ll6"></td>
+                <td colspan="2" id='ls6'></td>
+                <td colspan="2" id='sl6'></td>
+                <td colspan="2" id="ss6"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<!-- Vendor JS Files -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/venobox/venobox.min.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+<script>
+    $("#option-1").click(function() {
+        $('#option-1').val(0);
+        $('#option-2').val(1);
+    })
+    $("#option-2").click(function() {
+        $('#option-1').val(1);
+        $('#option-2').val(0);
+    })
+    $("#cal").click(function() {
+        if ($('#option-1').val() === '0') {
+            $('#longorshortspan1').html('多單');
+            $('#longorshortspan2').html('空單');
+            $('#tbody').show();
+            $('#ss1').hide();
+            $('#ss2').hide();
+            $('#ss3').hide();
+            $('#ss4').hide();
+            $('#ss5').hide();
+            $('#ss6').hide();
+            $('#sl1').hide();
+            $('#sl2').hide();
+            $('#sl3').hide();
+            $('#sl4').hide();
+            $('#sl5').hide();
+            $('#sl6').hide();
+
+            $('#ls1').show();
+            $('#ls2').show();
+            $('#ls3').show();
+            $('#ls4').show();
+            $('#ls5').show();
+            $('#ls6').show();
+            $('#ll1').show();
+            $('#ll2').show();
+            $('#ll3').show();
+            $('#ll4').show();
+            $('#ll5').show();
+            $('#ll6').show();
+        }
+
+        if ($('#option-2').val() === '0') {
+            $('#longorshortspan1').html('多單');
+            $('#longorshortspan2').html('空單');
+            $('#tbody').show();
+            $('#ls1').hide();
+            $('#ls2').hide();
+            $('#ls3').hide();
+            $('#ls4').hide();
+            $('#ls5').hide();
+            $('#ls6').hide();
+            $('#ll1').hide();
+            $('#ll2').hide();
+            $('#ll3').hide();
+            $('#ll4').hide();
+            $('#ll5').hide();
+            $('#ll6').hide();
+
+            $('#ss1').show();
+            $('#ss2').show();
+            $('#ss3').show();
+            $('#ss4').show();
+            $('#ss5').show();
+            $('#ss6').show();
+            $('#sl1').show();
+            $('#sl2').show();
+            $('#sl3').show();
+            $('#sl4').show();
+            $('#sl5').show();
+            $('#sl6').show();
+        }
+        $('#ls1').html(Math.round($('#input').val() * 1.2));
+        $('#ll1').html($('#input').val() * 2);
+        $('#sl1').html(Math.round($('#input').val() * 1.2));
+        $('#ss1').html($('#input').val() * 2);
+
+        $('#ls2').html($('#input').val() * 4 - $('#input').val());
+        $('#sl2').html($('#input').val() * 4 - $('#input').val());
+        $('#ll2').html($('#input').val() * 8);
+        $('#ll2').html($('#ll2').html() - $('#ll1').html());
+        $('#ss2').html($('#input').val() * 8);
+        $('#ss2').html($('#ss2').html() - $('#ss1').html());
+
+
+        $('#ls3').html($('#input').val() * 16);
+        $('#ls3').html($('#ls3').html() - $('#ls1').html() - $('#ls2').html());
+        $('#sl3').html($('#input').val() * 16);
+        $('#sl3').html($('#sl3').html() - $('#sl1').html() - $('#sl2').html());
+
+        $('#ll3').html($('#input').val() * 32);
+        $('#ll3').html($('#ll3').html() - $('#ll1').html() - $('#ll2').html());
+        $('#ss3').html($('#input').val() * 32);
+        $('#ss3').html($('#ss3').html() - $('#ss1').html() - $('#ss2').html());
+
+        $('#ls4').html($('#input').val() * 64);
+        $('#ls4').html($('#ls4').html() - $('#ls1').html() - $('#ls2').html() - $('#ls3').html());
+        $('#sl4').html($('#input').val() * 64);
+        $('#sl4').html($('#sl4').html() - $('#sl1').html() - $('#sl2').html() - $('#sl3').html());
+
+        $('#ll4').html($('#input').val() * 128);
+        $('#ll4').html($('#ll4').html() - $('#ll1').html() - $('#ll2').html() - $('#ll3').html());
+        $('#ss4').html($('#input').val() * 128);
+        $('#ss4').html($('#ss4').html() - $('#ss1').html() - $('#ss2').html() - $('#ss3').html());
+
+        $('#ls5').html($('#input').val() * 256);
+        $('#ls5').html($('#ls5').html() - $('#ls1').html() - $('#ls2').html() - $('#ls3').html() - $('#ls4').html());
+        $('#sl5').html($('#input').val() * 256);
+        $('#sl5').html($('#sl5').html() - $('#sl1').html() - $('#sl2').html() - $('#sl3').html() - $('#sl4').html());
+
+        $('#ll5').html($('#input').val() * 512);
+        $('#ll5').html($('#ll5').html() - $('#ll1').html() - $('#ll2').html() - $('#ll3').html() - $('#ll4').html());
+        $('#ss5').html($('#input').val() * 512);
+        $('#ss5').html($('#ss5').html() - $('#ss1').html() - $('#ss2').html() - $('#ss3').html() - $('#ll4').html());
+
+
+        $('#ls6').html(-$('#ls1').html() - $('#ls2').html() - $('#ls3').html() - $('#ls4').html() - $('#ls5').html());
+        $('#ls6').html(Math.abs($('#ls6').html()));
+
+        $('#sl6').html(-$('#sl1').html() - $('#sl2').html() - $('#sl3').html() - $('#sl4').html() - $('#sl5').html());
+        $('#sl6').html(Math.abs($('#sl6').html()));
+    });
+</script>
+
+</html>
