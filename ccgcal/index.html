@@ -133,46 +133,60 @@
         <h2 style="color:white;text-align:center;">請在此填入首單數量<input type="text" id="input"><button type="button" id="cal" class="btn btn-primary" style="border-color:#4FC3A1; background-color:#4FC3A1">點我計算</button></h2>
         <thead>
             <tr>
+                <th scope="col" style="text-align:center"><span></span>單號</th>
                 <th id="longorshort1" scope="col" style="text-align:center" colspan="2"><span id="longorshortspan1"></span>參數設置</th>
                 <th id="longorshort2" scope="col" style="text-align:center" colspan="2"><span id="longorshortspan2"></span>參數設置</th>
             </tr>
         </thead>
         <tbody id="tbody" style="display:none;">
             <tr>
+                <td>1</td>
                 <td colspan="2" id='ll1'></td>
                 <td colspan="2" id='ls1'></td>
                 <td colspan="2" id='sl1'></td>
                 <td colspan="2" id='ss1'></td>
             </tr>
             <tr>
+                <td>2</td>
                 <td colspan="2" id='ll2'></td>
                 <td colspan="2" id='ls2'></td>
                 <td colspan="2" id='sl2'></td>
                 <td colspan="2" id='ss2'></td>
             </tr>
             <tr>
+                <td>3</td>
                 <td colspan="2" id='ll3'></td>
                 <td colspan="2" id='ls3'></td>
                 <td colspan="2" id='sl3'></td>
                 <td colspan="2" id='ss3'></td>
             </tr>
             <tr>
+                <td>4</td>
                 <td colspan="2" id='ll4'></td>
                 <td colspan="2" id='ls4'></td>
                 <td colspan="2" id='sl4'></td>
                 <td colspan="2" id='ss4'></td>
             </tr>
             <tr>
+                <td>5</td>
                 <td colspan="2" id='ll5'></td>
                 <td colspan="2" id='ls5'></td>
                 <td colspan="2" id='sl5'></td>
                 <td colspan="2" id='ss5'></td>
             </tr>
             <tr>
+                <td>6</td>
                 <td colspan="2" id="ll6"></td>
                 <td colspan="2" id='ls6'></td>
                 <td colspan="2" id='sl6'></td>
                 <td colspan="2" id="ss6"></td>
+            </tr>
+            <tr>
+                <td>總量</td>
+                <td colspan="2" id="ll7"></td>
+                <td colspan="2" id='ls7'></td>
+                <td colspan="2" id='sl7'></td>
+                <td colspan="2" id="ss7"></td>
             </tr>
         </tbody>
     </table>
@@ -209,12 +223,14 @@
             $('#ss4').hide();
             $('#ss5').hide();
             $('#ss6').hide();
+            $('#ss7').hide();
             $('#sl1').hide();
             $('#sl2').hide();
             $('#sl3').hide();
             $('#sl4').hide();
             $('#sl5').hide();
             $('#sl6').hide();
+            $('#sl7').hide();
 
             $('#ls1').show();
             $('#ls2').show();
@@ -222,12 +238,14 @@
             $('#ls4').show();
             $('#ls5').show();
             $('#ls6').show();
+            $('#ls7').show();
             $('#ll1').show();
             $('#ll2').show();
             $('#ll3').show();
             $('#ll4').show();
             $('#ll5').show();
             $('#ll6').show();
+            $('#ll7').show();
         }
 
         if ($('#option-2').val() === '0') {
@@ -240,12 +258,14 @@
             $('#ls4').hide();
             $('#ls5').hide();
             $('#ls6').hide();
+            $('#ls7').hide();
             $('#ll1').hide();
             $('#ll2').hide();
             $('#ll3').hide();
             $('#ll4').hide();
             $('#ll5').hide();
             $('#ll6').hide();
+            $('#ll7').hide();
 
             $('#ss1').show();
             $('#ss2').show();
@@ -253,12 +273,14 @@
             $('#ss4').show();
             $('#ss5').show();
             $('#ss6').show();
+            $('#ss7').show();
             $('#sl1').show();
             $('#sl2').show();
             $('#sl3').show();
             $('#sl4').show();
             $('#sl5').show();
             $('#sl6').show();
+            $('#sl7').show();
         }
         $('#ls1').html(Math.round($('#input').val() * 1.2));
         $('#ll1').html($('#input').val() * 2);
@@ -309,6 +331,11 @@
 
         $('#sl6').html(-$('#sl1').html() - $('#sl2').html() - $('#sl3').html() - $('#sl4').html() - $('#sl5').html());
         $('#sl6').html(Math.abs($('#sl6').html()));
+
+        $('#ll7').html(parseInt($('#ll1').html()) + parseInt($('#ll2').html()) + parseInt($('#ll3').html()) + parseInt($('#ll4').html()) + parseInt($('#ll5').html()));
+        $('#ls7').html(parseInt($('#ls1').html()) + parseInt($('#ls2').html()) + parseInt($('#ls3').html()) + parseInt($('#ls4').html()) + parseInt($('#ls5').html()) + parseInt($('#ls6').html()));
+        $('#sl7').html(parseInt($('#sl1').html()) + parseInt($('#sl2').html()) + parseInt($('#sl3').html()) + parseInt($('#sl4').html()) + parseInt($('#sl5').html()) + parseInt($('#sl6').html()));
+        $('#ss7').html(parseInt($('#ss1').html()) + parseInt($('#ss2').html()) + parseInt($('#ss3').html()) + parseInt($('#ss4').html()) + parseInt($('#ss5').html()));
     });
 </script>
 
