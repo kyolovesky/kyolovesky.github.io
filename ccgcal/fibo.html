@@ -327,10 +327,10 @@
             $('#sl8').show();
             $('#slall').show();
         }
-        $('#ls1').html(Math.round($('#input').val() * 1) + '<br>1.2倍為' + Math.round($('#input').val() * 1.2));
-        $('#ll1').html(Math.round($('#input').val() * 1) + '<br>1.2倍為' + Math.round($('#input').val() * 1.2));
-        $('#sl1').html(Math.round($('#input').val() * 1) + '<br>1.2倍為' + Math.round($('#input').val() * 1.2));
-        $('#ss1').html(Math.round($('#input').val() * 1) + '<br>1.2倍為' + Math.round($('#input').val() * 1.2));
+        $('#ls1').html(Math.round($('#input').val() * 1));
+        $('#ll1').html(Math.round($('#input').val() * 1));
+        $('#sl1').html(Math.round($('#input').val() * 1));
+        $('#ss1').html(Math.round($('#input').val() * 1));
 
         $('#ls2').html($('#input').val() * 2);
         $('#sl2').html($('#input').val() * 2);
@@ -365,16 +365,16 @@
 
 
 
-        $('#ls8').html(-(Math.round($('#input').val() * 1) - $('#ll2').html() - $('#ll3').html() - $('#ll4').html() - $('#ll5').html()- $('#ll6').html()));
+        $('#ls8').html(-$('#ll1').html() - $('#ll2').html() - $('#ll3').html() - $('#ll4').html() - $('#ll5').html()- $('#ll6').html());
         $('#ls8').html(Math.abs($('#ls8').html()));
 
-        $('#sl8').html(-(Math.round($('#input').val() * 1) - $('#ss2').html() - $('#ss3').html() - $('#ss4').html() - $('#ss5').html()- $('#ss6').html()));
+        $('#sl8').html(-$('#ss1').html() - $('#ss2').html() - $('#ss3').html() - $('#ss4').html() - $('#ss5').html()- $('#ss6').html());
         $('#sl8').html(Math.abs($('#sl8').html()));
 
-        $('#llall').html(parseInt(Math.round($('#input').val() * 1) + parseInt($('#ll2').html()) + parseInt($('#ll3').html()) + parseInt($('#ll4').html()) + parseInt($('#ll5').html()) + parseInt($('#ll6').html())+ parseInt($('#ll7').html())));
-        $('#lsall').html(parseInt(Math.round($('#input').val() * 1) + parseInt($('#ls2').html()) + parseInt($('#ls3').html()) + parseInt($('#ls4').html()) + parseInt($('#ls5').html()) + parseInt($('#ls6').html())+ parseInt($('#ls7').html())+ parseInt($('#ls8').html())));
-        $('#slall').html(parseInt(Math.round($('#input').val() * 1) + parseInt($('#sl2').html()) + parseInt($('#sl3').html()) + parseInt($('#sl4').html()) + parseInt($('#sl5').html()) + parseInt($('#sl6').html())+ parseInt($('#sl7').html())+ parseInt($('#sl8').html())));
-        $('#ssall').html(parseInt(Math.round($('#input').val() * 1) + parseInt($('#ss2').html()) + parseInt($('#ss3').html()) + parseInt($('#ss4').html()) + parseInt($('#ss5').html())+ parseInt($('#ss6').html())+ parseInt($('#ss7').html())));
+        $('#llall').html(parseInt($('#ll1').html()) + parseInt($('#ll2').html()) + parseInt($('#ll3').html()) + parseInt($('#ll4').html()) + parseInt($('#ll5').html()) + parseInt($('#ll6').html())+ parseInt($('#ll7').html()));
+        $('#lsall').html(parseInt($('#ls1').html()) + parseInt($('#ls2').html()) + parseInt($('#ls3').html()) + parseInt($('#ls4').html()) + parseInt($('#ls5').html()) + parseInt($('#ls6').html())+ parseInt($('#ls7').html())+ parseInt($('#ls8').html()));
+        $('#slall').html(parseInt($('#sl1').html()) + parseInt($('#sl2').html()) + parseInt($('#sl3').html()) + parseInt($('#sl4').html()) + parseInt($('#sl5').html()) + parseInt($('#sl6').html())+ parseInt($('#sl7').html())+ parseInt($('#sl8').html()));
+        $('#ssall').html(parseInt($('#ss1').html()) + parseInt($('#ss2').html()) + parseInt($('#ss3').html()) + parseInt($('#ss4').html()) + parseInt($('#ss5').html())+ parseInt($('#ss6').html())+ parseInt($('#ss7').html()));
     });
 </script>
 
