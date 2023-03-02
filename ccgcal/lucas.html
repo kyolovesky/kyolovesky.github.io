@@ -130,12 +130,16 @@
                 <span>做空</span>
             </label>
         </div>
-        <h2 style="color:white;text-align:center;">請在此填入首單數量<input type="number" id="input"><button type="button" id="cal" class="btn btn-primary" style="border-color:#4FC3A1; background-color:#4FC3A1">點我計算</button></h2>
+        <h2 style="color:white;text-align:center;">請在此填入首單數量<input type="number" id="input"><button type="button"
+                id="cal" class="btn btn-primary" style="border-color:#4FC3A1; background-color:#4FC3A1">點我計算</button>
+        </h2>
         <thead>
             <tr>
                 <th scope="col" style="text-align:center"><span></span>單號</th>
-                <th id="longorshort1" scope="col" style="text-align:center" colspan="2"><span id="longorshortspan1"></span>參數設置</th>
-                <th id="longorshort2" scope="col" style="text-align:center" colspan="2"><span id="longorshortspan2"></span>參數設置</th>
+                <th id="longorshort1" scope="col" style="text-align:center" colspan="2"><span
+                        id="longorshortspan1"></span>參數設置</th>
+                <th id="longorshort2" scope="col" style="text-align:center" colspan="2"><span
+                        id="longorshortspan2"></span>參數設置</th>
             </tr>
         </thead>
         <tbody id="tbody" style="display:none;">
@@ -225,15 +229,15 @@
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
 <script>
-    $("#option-1").click(function() {
+    $("#option-1").click(function () {
         $('#option-1').val(0);
         $('#option-2').val(1);
     })
-    $("#option-2").click(function() {
+    $("#option-2").click(function () {
         $('#option-1').val(1);
         $('#option-2').val(0);
     })
-    $("#cal").click(function() {
+    $("#cal").click(function () {
         if ($('#option-1').val() === '0') {
             $('#longorshortspan1').html('多單');
             $('#longorshortspan2').html('空單');
@@ -327,13 +331,17 @@
             $('#sl8').show();
             $('#slall').show();
         }
-        $('#ls1').html(Math.round($('#input').val() * 1));
+        $('#ls1').html(Math.round($('#input').val() * 1.2));
         $('#ll1').html(Math.round($('#input').val() * 3));
-        $('#sl1').html(Math.round($('#input').val() * 1));
+        $('#sl1').html(Math.round($('#input').val() * 1.2));
         $('#ss1').html(Math.round($('#input').val() * 3));
 
-        $('#ls2').html($('#input').val() * 4);
-        $('#sl2').html($('#input').val() * 4);
+        $('#ls2').html(($('#input').val() * 4) - ((Math.round($('#input').val() * 1.2) - (Math.round($('#input')
+            .val() *
+            1.2)))));
+        $('#sl2').html($('#input').val() * 4 - ((Math.round($('#input').val() * 1.2) - (Math.round($('#input')
+            .val() *
+            1.2)))));
         $('#ll2').html($('#input').val() * 7);
         $('#ss2').html($('#input').val() * 7);
 
@@ -363,22 +371,36 @@
         $('#ll7').html($('#input').val() * 843);
         $('#ss7').html($('#input').val() * 843);
 
-var llall=parseInt($('#ll1').html()) + parseInt($('#ll2').html()) + parseInt($('#ll3').html()) + parseInt($('#ll4').html()) + parseInt($('#ll5').html()) + parseInt($('#ll6').html())+ parseInt($('#ll7').html());
-var ssall=parseInt($('#ss1').html()) + parseInt($('#ss2').html()) + parseInt($('#ss3').html()) + parseInt($('#ss4').html()) + parseInt($('#ss5').html())+ parseInt($('#ss6').html())+ parseInt($('#ss7').html());
+        var llall = parseInt($('#ll1').html()) + parseInt($('#ll2').html()) + parseInt($('#ll3').html()) +
+            parseInt($('#ll4').html()) + parseInt($('#ll5').html()) + parseInt($('#ll6').html()) + parseInt($(
+                '#ll7').html());
+        var ssall = parseInt($('#ss1').html()) + parseInt($('#ss2').html()) + parseInt($('#ss3').html()) +
+            parseInt($('#ss4').html()) + parseInt($('#ss5').html()) + parseInt($('#ss6').html()) + parseInt($(
+                '#ss7').html());
 
-        
-        
-        $('#ls8').html(llall-$('#ls1').html() - $('#ls2').html() - $('#ls3').html() - $('#ls4').html() - $('#ls5').html()- $('#ls6').html()- $('#ls7').html());
+
+
+        $('#ls8').html(llall - $('#ls1').html() - $('#ls2').html() - $('#ls3').html() - $('#ls4').html() - $(
+            '#ls5').html() - $('#ls6').html() - $('#ls7').html());
         //$('#ls8').html(Math.abs($('#ls8').html()));
 
-        $('#sl8').html(ssall-$('#sl1').html() - $('#sl2').html() - $('#sl3').html() - $('#sl4').html() - $('#sl5').html()- $('#sl6').html()- $('#sl7').html());
+        $('#sl8').html(ssall - $('#sl1').html() - $('#sl2').html() - $('#sl3').html() - $('#sl4').html() - $(
+            '#sl5').html() - $('#sl6').html() - $('#sl7').html());
         //$('#sl8').html(Math.abs($('#sl8').html()));
 
 
-        $('#llall').html(parseInt($('#ll1').html()) + parseInt($('#ll2').html()) + parseInt($('#ll3').html()) + parseInt($('#ll4').html()) + parseInt($('#ll5').html()) + parseInt($('#ll6').html())+ parseInt($('#ll7').html()));
-        $('#lsall').html(parseInt($('#ls1').html()) + parseInt($('#ls2').html()) + parseInt($('#ls3').html()) + parseInt($('#ls4').html()) + parseInt($('#ls5').html()) + parseInt($('#ls6').html())+ parseInt($('#ls7').html())+ parseInt($('#ls8').html()));
-        $('#slall').html(parseInt($('#sl1').html()) + parseInt($('#sl2').html()) + parseInt($('#sl3').html()) + parseInt($('#sl4').html()) + parseInt($('#sl5').html()) + parseInt($('#sl6').html())+ parseInt($('#sl7').html())+ parseInt($('#sl8').html()));
-        $('#ssall').html(parseInt($('#ss1').html()) + parseInt($('#ss2').html()) + parseInt($('#ss3').html()) + parseInt($('#ss4').html()) + parseInt($('#ss5').html())+ parseInt($('#ss6').html())+ parseInt($('#ss7').html()));
+        $('#llall').html(parseInt($('#ll1').html()) + parseInt($('#ll2').html()) + parseInt($('#ll3').html()) +
+            parseInt($('#ll4').html()) + parseInt($('#ll5').html()) + parseInt($('#ll6').html()) + parseInt(
+                $('#ll7').html()));
+        $('#lsall').html(parseInt($('#ls1').html()) + parseInt($('#ls2').html()) + parseInt($('#ls3').html()) +
+            parseInt($('#ls4').html()) + parseInt($('#ls5').html()) + parseInt($('#ls6').html()) + parseInt(
+                $('#ls7').html()) + parseInt($('#ls8').html()));
+        $('#slall').html(parseInt($('#sl1').html()) + parseInt($('#sl2').html()) + parseInt($('#sl3').html()) +
+            parseInt($('#sl4').html()) + parseInt($('#sl5').html()) + parseInt($('#sl6').html()) + parseInt(
+                $('#sl7').html()) + parseInt($('#sl8').html()));
+        $('#ssall').html(parseInt($('#ss1').html()) + parseInt($('#ss2').html()) + parseInt($('#ss3').html()) +
+            parseInt($('#ss4').html()) + parseInt($('#ss5').html()) + parseInt($('#ss6').html()) + parseInt(
+                $('#ss7').html()));
     });
 </script>
 
