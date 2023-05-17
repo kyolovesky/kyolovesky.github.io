@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>匯率計算器</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">匯率計算器</h1>
+        <div class="form-group">
+            <label for="from-currency">轉換貨幣</label>
+            <div class="select-container">
+                <select id="from-currency">
+                    <option value="TWD" selected>
+                        <img src="https://img.icons8.com/color/24/000000/taiwan-circular.png" alt="Taiwan Flag" />
+                        新台幣 (TWD)
+                    </option>
+                    <option value="BTC">
+                        <img src="https://img.icons8.com/color/24/000000/bitcoin.png" alt="Bitcoin Flag" />
+                        比特幣 (BTC)
+                    </option>
+                    <option value="USDT">
+                        <img src="https://img.icons8.com/color/24/000000/us-dollar.png" alt="USDT Flag" />
+                        美元穩定幣 (USDT)
+                    </option>
+                </select>
+                <input type="number" id="from-amount" placeholder="請輸入金額" />
+            </div>
+        </div>
+        <div class="swap-button-container">
+            <button id="swap-button">
+                <img src="images/sort.png" alt="Swap" />
+            </button>
+        </div>
+        <div class="form-group">
+            <label for="to-currency">兌換貨幣</label>
+            <div class="select-container">
+                <select id="to-currency">
+                    <option value="BTC" selected>
+                        <img src="https://img.icons8.com/color/24/000000/bitcoin.png" alt="Bitcoin Flag" />
+                        比特幣 (BTC)
+                    </option>
+                    <option value="TWD">
+                        <img src="https://img.icons8.com/color/24/000000/taiwan-circular.png" alt="Taiwan Flag" />
+                        新台幣 (TWD)
+                    </option>
+                    <option value="USDT">
+                        <img src="https://img.icons8.com/color/24/000000/us-dollar.png" alt="USDT Flag" />
+                        美元穩定幣 (USDT)
+                    </option>
+                </select>
+                <input type="text" id="to-amount" readonly />
+            </div>
+        </div>
+        <div id="time"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
