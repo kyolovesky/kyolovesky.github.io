@@ -8,7 +8,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-color: #333333;
+            /* 修改這個樣式 */
             margin: 0;
             padding: 0;
         }
@@ -17,13 +18,16 @@
             text-align: center;
             margin-top: 30px;
             margin-bottom: 20px;
+            color: white;
+            /* 新增這個樣式 */
         }
 
         .container {
             width: 80%;
             max-width: 500px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: #444444;
+            /* 修改這個樣式 */
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -32,6 +36,8 @@
         label {
             display: block;
             margin-bottom: 10px;
+            color: white;
+            /* 新增這個樣式 */
         }
 
         input[type="number"],
@@ -42,7 +48,10 @@
             border-radius: 5px;
             margin-bottom: 20px;
             box-sizing: border-box;
-            background-color: #e6e6e6;
+            background-color: #555555;
+            /* 修改這個樣式 */
+            color: white;
+            /* 新增這個樣式 */
         }
 
         .button-container {
@@ -59,16 +68,13 @@
             cursor: pointer;
             width: 48%;
             transition: background-color 0.3s ease-in-out;
-            /* 新增這個樣式 */
         }
 
         button.red {
-            /* 新增這個樣式 */
             background-color: #ff4d4d;
         }
 
         button.green {
-            /* 新增這個樣式 */
             background-color: #4CAF50;
         }
 
@@ -101,8 +107,8 @@
         <label for="stop-loss-price">止損價：</label>
         <input type="number" step="0.01" id="stop-loss-price">
         <div class="button-container">
-            <button onclick="calculate('做多')" class="green">做多</button> <!-- 修改這個樣式 -->
-            <button onclick="calculate('做空')" class="red">做空</button> <!-- 修改這個樣式 -->
+            <button onclick="calculate('做空')" class="red">做空</button>
+            <button onclick="calculate('做多')" class="green">做多</button>
         </div>
         <label for="result">止盈：</label>
         <input type="text" id="result" readonly>
