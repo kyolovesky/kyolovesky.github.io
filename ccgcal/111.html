@@ -90,13 +90,14 @@
         function calculate(action) {
             var openingPrice = parseFloat(document.getElementById("opening-price").value);
             var stopLossPrice = parseFloat(document.getElementById("stop-loss-price").value);
-            var result = (openingPrice - stopLossPrice + openingPrice).toFixed(5);
+            var result = (openingPrice - stopLossPrice + openingPrice).toFixed(8);
+            result = parseFloat(result).toString().replace(/(\.\d*?[1-9])0+$/, "$1"); // 去掉小數點尾數的 0
             document.getElementById("result").value = result;
             if (action === "做空") {
-                var profitOrLoss = Math.abs((openingPrice - stopLossPrice)).toFixed(5);
+                var profitOrLoss = Math.abs((openingPrice - stopLossPrice)).toFixed(8);
                 document.getElementById("profit-or-loss").value = profitOrLoss;
             } else if (action === "做多") {
-                var profitOrLoss = Math.abs((stopLossPrice - openingPrice)).toFixed(5);
+                var profitOrLoss = Math.abs((stopLossPrice - openingPrice)).toFixed(8);
                 document.getElementById("profit-or-loss").value = profitOrLoss;
             }
         }
