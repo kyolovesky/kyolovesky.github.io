@@ -56,18 +56,24 @@
 
         .button-container {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
         }
 
-        button {
-            border: none;
-            color: white;
-            padding: 10px;
+        .button-container button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 0 10px;
             border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
             cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s ease-in-out;
+            transition: all 0.3s ease;
+        }
+
+        .button-container button:hover {
+            opacity: 0.8;
         }
 
         button.red {
@@ -86,22 +92,7 @@
             background-color: #a31515;
         }
     </style>
-    <script>
-        function calculate(action) {
-            var openingPrice = parseFloat(document.getElementById("opening-price").value);
-            var stopLossPrice = parseFloat(document.getElementById("stop-loss-price").value);
-            var result = (openingPrice - stopLossPrice + openingPrice).toFixed(8);
-            result = parseFloat(result).toString().replace(/(\.\d*?[1-9])0+$/, "$1"); // 去掉小數點尾數的 0
-            document.getElementById("result").value = result;
-            if (action === "做空") {
-                var profitOrLoss = Math.abs((openingPrice - stopLossPrice)).toFixed(8);
-                document.getElementById("profit-or-loss").value = profitOrLoss;
-            } else if (action === "做多") {
-                var profitOrLoss = Math.abs((stopLossPrice - openingPrice)).toFixed(8);
-                document.getElementById("profit-or-loss").value = profitOrLoss;
-            }
-        }
-    </script>
+
 </head>
 
 <body>
@@ -114,6 +105,7 @@
         <div class="button-container">
             <!-- <button onclick="calculate('計算')" class="red">計算</button> -->
             <button onclick="calculate('計算')" class="green">計算</button>
+            <button id="clear-btn">清除</button>
         </div>
         <label for="result">止盈：</label>
         <input type="text" id="result" readonly>
@@ -121,5 +113,34 @@
         <input type="text" id="profit-or-loss" readonly>
     </div>
 </body>
+<script>
+    const clearBtn = document.getElementById("clear-btn");
+
+    clearBtn.addEventListener("click", () => {
+        const inputBoxes = document.querySelectorAll("input[type='number']");
+        inputBoxes.forEach((inputBox) => {
+            inputBox.value = "";
+        });
+
+        const resultInput = document.getElementById("result");
+        resultInput.value = "";
+
+    });
+
+    function calculate(action) {
+        var openingPrice = parseFloat(document.getElementById("opening-price").value);
+        var stopLossPrice = parseFloat(document.getElementById("stop-loss-price").value);
+        var result = (openingPrice - stopLossPrice + openingPrice).toFixed(8);
+        result = parseFloat(result).toString().replace(/(\.\d*?[1-9])0+$/, "$1"); // 去掉小數點尾數的 0
+        document.getElementById("result").value = result;
+        if (action === "做空") {
+            var profitOrLoss = Math.abs((openingPrice - stopLossPrice)).toFixed(8);
+            document.getElementById("profit-or-loss").value = profitOrLoss;
+        } else if (action === "做多") {
+            var profitOrLoss = Math.abs((stopLossPrice - openingPrice)).toFixed(8);
+            document.getElementById("profit-or-loss").value = profitOrLoss;
+        }
+    }
+</script>
 
 </html>
