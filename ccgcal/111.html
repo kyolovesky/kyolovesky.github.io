@@ -111,6 +111,9 @@
         <input type="text" id="result1" readonly>
         <label for="result2">止盈2：</label>
         <input type="text" id="result2" readonly>
+        <!-- 新增保護止損欄位 -->
+        <label for="protective-stop-loss-price">保護止損價：</label>
+        <input type="number" id="protective-stop-loss-price">
         <label for="profit-or-loss">盈虧點數：</label>
         <input type="text" id="profit-or-loss" readonly>
     </div>
@@ -123,24 +126,29 @@
         inputBoxes.forEach((inputBox) => {
             inputBox.value = "";
         });
-
+        const PSLS = document.getElementById("protective-stop-loss-price");
         const resultInput1 = document.getElementById("result1");
         const resultInput2 = document.getElementById("result2");
         const profitOrLossInput = document.getElementById("profit-or-loss");
         resultInput1.value = "";
         resultInput2.value = "";
+        PSLS.value = "";
         profitOrLossInput.value = "";
     });
 
     function calculate(action) {
         var openingPrice = parseFloat(document.getElementById("opening-price").value);
         var stopLossPrice = parseFloat(document.getElementById("stop-loss-price").value);
+        var tp0Ratio = 0.5;
         var tp1Ratio = 1;
         var tp2Ratio = 1.5; // 將止盈2的比例設為 1.5
+        var result0 = (openingPrice + tp0Ratio * (openingPrice - stopLossPrice)).toFixed(8); // 修改公式
         var result1 = (openingPrice + tp1Ratio * (openingPrice - stopLossPrice)).toFixed(8); // 修改公式
         var result2 = (openingPrice + tp2Ratio * (openingPrice - stopLossPrice)).toFixed(8); // 修改公式
+        result0 = parseFloat(result0).toString().replace(/(\.\d*?[1-9])0+$/, "$1"); // 去掉小數點尾數的 0
         result1 = parseFloat(result1).toString().replace(/(\.\d*?[1-9])0+$/, "$1"); // 去掉小數點尾數的 0
         result2 = parseFloat(result2).toString().replace(/(\.\d*?[1-9])0+$/, "$1"); // 去掉小數點尾數的 0
+        document.getElementById("protective-stop-loss-price").value = result0;
         document.getElementById("result1").value = result1;
         document.getElementById("result2").value = result2;
         if (action === "做空") {
